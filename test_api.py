@@ -12,7 +12,7 @@ def api():
 
 def test_send_email(api):
     # Test sending an email
-    message = api.send_email(recipient=['recipient1@example.com', 'recipient2@example.com'], subject='Test email', message_text='This is a test email.')
+    message = api.send_email(recipient=['recipient1@example.com','recipient2@example.com'], subject='Test email', message_text='This is a test email.')
     assert message is not None
 
 

@@ -8,15 +8,23 @@ from email.mime.image import MIMEImage
 import os
 
 
+
 class GmailAPI:
     def __init__(self, credentials_file):
         self.credentials = Credentials.from_authorized_user_file(credentials_file)
         self.service = build('gmail', 'v1', credentials=self.credentials)
 
-    def send_email(self, recipient, subject, message_text, image_path=None):
+    def send_email(self, recipient: list[str], subject: str, message_text: str, image_path:str=None):
+        '''
+        :param recipient: recipient email list
+        :param subject: subject name of the email
+        :param message_text: message to send
+        :param image_path: atttahchments to add if any
+        :return: JSON object, including message id, threadId,labelIds,snippet, historyId and payload
+        '''
         # Create the message
         message = MIMEMultipart()
-        message['to'] = ', '.join(recipient)
+        message['to'] = ','.join(recipient)
         message['subject'] = subject
         message.attach(MIMEText(message_text))
 
@@ -39,7 +47,12 @@ class GmailAPI:
             message = None
         return message
 
-    def search_messages(self, query):
+    def search_messages(self, query: str):
+        '''
+
+        :param query: text
+        :return: JSON object, including message id, threadId
+        '''
         # Search for messages containing a keyword in the subject or body
         response = self.service.users().messages().list(userId='me', q=query).execute()
         messages = response.get('messages', [])
@@ -48,14 +61,4 @@ class GmailAPI:
         return messages
 
 
-if __name__ == '__main__':
-    # Initialize the GmailAPI object
-    api = GmailAPI('credentials.json')
 
-    # Send an email
-    api.send_email(recipient=['recipient1@example.com', 'recipient2@example.com'], subject='Test email', message_text='This is a test email.')
-
-    # Search for messages containing a keyword
-    messages = api.search_messages(query='subject:example OR body:example')
-    for message in messages:
-        print(message['snippet'])
