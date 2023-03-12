@@ -11,6 +11,7 @@ Create a new Gmail API project:
 
 
 Set up authentication:
+
 7. Next, you will need to create OAuth 2.0 credentials for your project so that it can authenticate and access your Gmail account. To do this, click on the "Create credentials" button and select "OAuth client ID". 
 8. Choose "Desktop App" as the application type and give it a name. 
 9. Click on the "Create" button to create the credentials. 
@@ -18,6 +19,8 @@ Set up authentication:
 
 
 Install the Google API client library and usage of features(send_email and search message):
+
+
 11. Install the python packages from requirements.txt file
 12. Once you have your credentials and python packages installed, the gmail_api.py file contains contains GMAILAPI class
     with methods send_email and search_messages to send email and search for specific messages in your mailbox
