@@ -1,5 +1,5 @@
 
-Steps to setup test gmail account and enable the API for sending and searching messages
+Steps to setup test gmail account and enable the GMAIL API for sending and searching messages
 
 Create a new Gmail API project:
 1. Go to https://console.developers.google.com create an account and sign in with your Google account.
@@ -21,8 +21,8 @@ Set up authentication:
 Install the Google API client library and test of features(send_email and search message):
 
 
-11. Install the python packages from requirements.txt file
+11. Install the python packages from requirements.txt file.
 12. Once you have your credentials and python packages installed, the gmail_api.py file contains GMAILAPI class
-    with methods send_email and search_messages to send email and search for specific messages in your mailbox
-13. app.py file contains to create object of GMAILAPI class  to send email and search message 
-14. test_api.py file contains test cases for the GMAILAPI class member functions
+    with methods send_email and search_messages to send email and search for specific messages in your mailbox.
+13. app.py file contains to create object of GMAILAPI class  to send email and search message. 
+14. test_api.py file contains test cases for the GMAILAPI class member functions.
