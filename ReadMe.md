@@ -18,11 +18,11 @@ Set up authentication:
 10. On the next screen, you will see your client ID and client secret. Click on the "Download" button to download your credentials as a JSON file. 
 
 
-Install the Google API client library and usage of features(send_email and search message):
+Install the Google API client library and test of features(send_email and search message):
 
 
 11. Install the python packages from requirements.txt file
-12. Once you have your credentials and python packages installed, the gmail_api.py file contains contains GMAILAPI class
+12. Once you have your credentials and python packages installed, the gmail_api.py file contains GMAILAPI class
     with methods send_email and search_messages to send email and search for specific messages in your mailbox
-13. app.py file contains to create object of GMAILAPI class  to send email and search messages 
-14. test_api.py file contains test cases for the GMAILAPI class methods
+13. app.py file contains to create object of GMAILAPI class  to send email and search message 
+14. test_api.py file contains test cases for the GMAILAPI class member functions
