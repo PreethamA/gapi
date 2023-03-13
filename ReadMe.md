@@ -22,7 +22,7 @@ Install the Google API client library and test of features(send_email and search
 
 
 11. Install the python packages from requirements.txt file.
-12. Once you have your credentials and python packages installed, the gmail_api.py file contains GMAILAPI class
+12. Once you have your credentials and python packages installed, the gmail_api.py file contains GmailService, GmailSender, GmailSearch class
     with methods send_email and search_messages to send email and search for specific messages in your mailbox.
-13. app.py file contains to create object of GMAILAPI class  to send email and search message. 
-14. test_api.py file contains test cases for the GMAILAPI class member functions.
+13. app.py file contains to create objects of GmailService, GmailSender, GmailSearch classes  to send email and search message. 
+14. test_api.py file contains test cases for the GmailService, GmailSender, GmailSearch classes member functions.

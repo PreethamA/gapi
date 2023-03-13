@@ -1,18 +1,20 @@
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-import base64
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
+import base64
 import os
 
-
-
-class GmailAPI:
+class GmailService:
     def __init__(self, credentials_file):
         self.credentials = Credentials.from_authorized_user_file(credentials_file)
         self.service = build('gmail', 'v1', credentials=self.credentials)
+
+class GmailSender:
+    def __init__(self, service):
+        self.service = service
 
     def send_email(self, recipient: list[str], subject: str, message_text: str, image_path:str=None):
         '''
@@ -20,7 +22,7 @@ class GmailAPI:
         :param subject: subject name of the email
         :param message_text: message to send
         :param image_path: atttahchments to add if any
-        :return: JSON object, including message id, threadId,labelIds,snippet, historyId and payload
+        :return: JSON object, includes message id, threadId,labelIds,snippet, historyId and payload
         '''
         # Create the message
         message = MIMEMultipart()
@@ -47,11 +49,15 @@ class GmailAPI:
             message = None
         return message
 
+class GmailSearch:
+    def __init__(self, service):
+        self.service = service
+
     def search_messages(self, query: str):
         '''
 
         :param query: text
-        :return: JSON object, including message id, threadId
+        :return: JSON object, includes message id, threadId
         '''
         # Search for messages containing a keyword in the subject or body
         response = self.service.users().messages().list(userId='me', q=query).execute()
@@ -59,6 +65,7 @@ class GmailAPI:
 
         # Print the snippet of each matching message
         return messages
+
 
 
 
